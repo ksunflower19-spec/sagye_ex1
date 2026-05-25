@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제주 바이브코딩 부트캠프 | 3박 4일</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f0e8;
+    --cream: #f5f0e8;
+    --sand: #e8dfc8;
+    --teal: #1a7f6e;
+    --teal-light: #25b89e;
+    --teal-pale: #d4f0eb;
+    --coral: #e85c3a;
+    --coral-light: #ff7a5a;
+    --sky: #7ab8d4;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--black);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--teal-light);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(245,240,232,0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--cream); }
+
+  .nav-cta {
+    background: var(--teal);
+    color: var(--cream) !important;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--teal-light) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 4rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 60% 40%, rgba(26,127,110,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 90% 80%, rgba(122,184,212,0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0a0a 0%, #0d1a18 100%);
+  }
+
+  .hero-wave {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .hero-wave svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--teal-light);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--teal-light);
+  }
+
+  .hero-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(4rem, 9vw, 9rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title .accent { color: var(--teal-light); }
+  .hero-title .outline {
+    -webkit-text-stroke: 1px rgba(245,240,232,0.3);
+    color: transparent;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.6);
+    max-width: 500px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .hero-meta-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(245,240,232,0.35);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hero-meta-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--cream);
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: var(--cream);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary:hover {
+    background: var(--teal-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    color: rgba(245,240,232,0.5);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--cream); }
+
+  .btn-ghost .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+  }
+
+  .btn-ghost:hover .arrow { transform: translateX(4px); }
+
+  /* FLOATING BADGES */
+  .floating-badge {
+    position: absolute;
+    z-index: 2;
+    background: rgba(26,127,110,0.15);
+    border: 1px solid rgba(26,127,110,0.3);
+    border-radius: 4px;
+    padding: 0.6rem 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--teal-light);
+    backdrop-filter: blur(8px);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .badge-1 { top: 22%; right: 12%; animation-delay: 0s; }
+  .badge-2 { top: 40%; right: 25%; animation-delay: 2s; }
+  .badge-3 { top: 60%; right: 8%; animation-delay: 4s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* SECTION BASE */
+  section { padding: 7rem 4rem; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--teal-light);
+  }
+
+  /* ABOUT */
+  .about {
+    background: #0f1f1c;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-title .teal { color: var(--teal-light); }
+
+  .about-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .stat {
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(245,240,232,0.08);
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+
+  .stat-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 2rem;
+    color: var(--teal-light);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-desc {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.45);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .code-window {
+    background: #0d0d0d;
+    border: 1px solid rgba(245,240,232,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  .code-titlebar {
+    background: rgba(245,240,232,0.04);
+    padding: 0.7rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+  }
+
+  .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .dot-red { background: #e85c3a; }
+  .dot-yellow { background: #f5c26b; }
+  .dot-green { background: var(--teal-light); }
+
+  .code-filename {
+    font-size: 0.65rem;
+    color: rgba(245,240,232,0.3);
+    margin-left: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .code-body {
+    padding: 1.5rem;
+    line-height: 2;
+  }
+
+  .c-comment { color: rgba(245,240,232,0.2); }
+  .c-keyword { color: var(--sky); }
+  .c-string { color: #c3e88d; }
+  .c-fn { color: #ffcb6b; }
+  .c-var { color: var(--teal-light); }
+  .c-num { color: #f78c6c; }
+
+  .vibe-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--coral);
+    color: var(--cream);
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 1.4rem;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+    font-size: 0.8rem;
+    animation: spin-slow 12s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* SCHEDULE */
+  .schedule {
+    background: var(--black);
+  }
+
+  .schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .schedule-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(245,240,232,0.08);
+    border: 1px solid rgba(245,240,232,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .day-col {
+    background: var(--black);
+    padding: 2rem 1.5rem;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .day-col:hover {
+    background: #0f1f1c;
+  }
+
+  .day-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--teal-light);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .day-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .day-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .day-items li {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.55);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .day-items li::before {
+    content: '—';
+    color: var(--teal);
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .day-emoji {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* FEATURES */
+  .features {
+    background: #0f1f1c;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(245,240,232,0.08);
+    margin-top: 4rem;
+    border: 1px solid rgba(245,240,232,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .feature-card {
+    background: #0f1f1c;
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+  }
+
+  .feature-card:hover { background: #152b26; }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(26,127,110,0.15);
+    border: 1px solid rgba(26,127,110,0.25);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .feature-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--cream);
+  }
+
+  .feature-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.75;
+  }
+
+  /* WHO */
+  .who {
+    background: var(--black);
+  }
+
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+
+  .who-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .who-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(245,240,232,0.03);
+    border: 1px solid rgba(245,240,232,0.07);
+    border-radius: 4px;
+    font-weight: 300;
+    font-size: 0.92rem;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.5;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .who-item:hover {
+    border-color: rgba(26,127,110,0.3);
+    background: rgba(26,127,110,0.05);
+  }
+
+  .who-item-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .who-cta-box {
+    background: linear-gradient(135deg, #0f1f1c 0%, #152b26 100%);
+    border: 1px solid rgba(26,127,110,0.2);
+    border-radius: 8px;
+    padding: 3rem 2.5rem;
+    position: sticky;
+    top: 8rem;
+  }
+
+  .who-cta-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .who-cta-title .accent { color: var(--teal-light); }
+
+  .price-box {
+    margin-bottom: 2rem;
+  }
+
+  .price-orig {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.3);
+    text-decoration: line-through;
+    margin-bottom: 0.3rem;
+  }
+
+  .price-now {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 3rem;
+    color: var(--teal-light);
+    line-height: 1;
+  }
+
+  .price-note {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.4);
+    margin-top: 0.4rem;
+  }
+
+  .includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .includes li {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.6);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 300;
+  }
+
+  .includes li::before {
+    content: '✓';
+    color: var(--teal-light);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  .seats-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232,92,58,0.15);
+    border: 1px solid rgba(232,92,58,0.3);
+    color: var(--coral-light);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--coral-light);
+    animation: pulse-anim 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-anim {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  /* FAQ */
+  .faq {
+    background: #0a0f0e;
+    border-top: 1px solid rgba(245,240,232,0.06);
+  }
+
+  .faq-header {
+    max-width: 600px;
+    margin-bottom: 4rem;
+  }
+
+  .faq-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.1;
+    margin-top: 1rem;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(245,240,232,0.07);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--cream);
+    text-align: left;
+    padding: 1.5rem 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .faq-q:hover { color: var(--teal-light); }
+
+  .faq-icon {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    color: var(--teal-light);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.8;
+    padding-right: 2rem;
+  }
+
+  .faq-a p { padding-bottom: 1.5rem; }
+
+  .faq-item.open .faq-a {
+    max-height: 200px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(245,240,232,0.06);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--teal-light);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.2);
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--cream); }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* TICKER */
+  .ticker-wrap {
+    background: var(--teal);
+    padding: 0.7rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker {
+    display: inline-flex;
+    animation: ticker 20s linear infinite;
+    gap: 0;
+  }
+
+  .ticker-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.8);
+    letter-spacing: 0.15em;
+    padding: 0 3rem;
+  }
+
+  .ticker-item .sep { color: rgba(245,240,232,0.3); margin: 0 1rem; }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">VIBE_CODING.JEJU</div>
+  <ul class="nav-links">
+    <li><a href="#about">소개</a></li>
+    <li><a href="#schedule">일정</a></li>
+    <li><a href="#features">특징</a></li>
+    <li><a href="#who">대상</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#apply" class="nav-cta">지금 신청</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="floating-badge badge-1">AI × CODE × JEJU</div>
+  <div class="floating-badge badge-2">3N / 4D BOOTCAMP</div>
+  <div class="floating-badge badge-3">VIBES ONLY ✦</div>
+
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <path d="M0,100 C360,200 720,0 1080,100 C1260,150 1380,80 1440,100 L1440,200 L0,200 Z" fill="#0f1f1c"/>
+    </svg>
+  </div>
+
+  <div class="hero-tag">2025 여름 — 제주도 한달살기 특집</div>
+
+  <h1 class="hero-title">
+    제주에서<br>
+    <span class="accent">바이브</span>로<br>
+    <span class="outline">코딩하다</span>
+  </h1>
+
+  <p class="hero-subtitle">
+    파도 소리와 함께 AI와 코딩하는 3박 4일.<br>
+    노트북 하나면 충분합니다. 나머지는 제주가 채워드립니다.
+  </p>
+
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">날짜</span>
+      <span class="hero-meta-value">2025년 8월 7일 – 10일</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">장소</span>
+      <span class="hero-meta-value">제주 애월 코워킹 빌라</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">정원</span>
+      <span class="hero-meta-value">12명 한정</span>
+    </div>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#apply" class="btn-primary">지금 신청하기</a>
+    <a href="#schedule" class="btn-ghost">일정 보기 <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">AI 바이브코딩 <span class="sep">✦</span></span>
+    <span class="ticker-item">제주 애월 <span class="sep">✦</span></span>
+    <span class="ticker-item">3박 4일 몰입 <span class="sep">✦</span></span>
+    <span class="ticker-item">12명 한정 <span class="sep">✦</span></span>
+    <span class="ticker-item">숙박 포함 <span class="sep">✦</span></span>
+    <span class="ticker-item">Claude & GPT <span class="sep">✦</span></span>
+    <span class="ticker-item">프로젝트 완성 <span class="sep">✦</span></span>
+    <span class="ticker-item">AI 바이브코딩 <span class="sep">✦</span></span>
+    <span class="ticker-item">제주 애월 <span class="sep">✦</span></span>
+    <span class="ticker-item">3박 4일 몰입 <span class="sep">✦</span></span>
+    <span class="ticker-item">12명 한정 <span class="sep">✦</span></span>
+    <span class="ticker-item">숙박 포함 <span class="sep">✦</span></span>
+    <span class="ticker-item">Claude & GPT <span class="sep">✦</span></span>
+    <span class="ticker-item">프로젝트 완성 <span class="sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left reveal">
+    <div class="section-label">What is this</div>
+    <h2 class="about-title">코드는 AI에게<br>아이디어는 <span class="teal">당신에게</span></h2>
+    <p class="about-desc">
+      바이브코딩은 AI와 함께 아이디어를 코드로 빠르게 구현하는 새로운 개발 방식입니다.
+      복잡한 문법보다 "뭘 만들고 싶은가"가 중요합니다. 제주의 자연 속에서 3박 4일간
+      몰입하여 나만의 서비스를 완성해보세요.
+    </p>
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-num">4일</span>
+        <span class="stat-desc">집중 몰입 세션</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">12명</span>
+        <span class="stat-desc">소규모 밀착 운영</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1개+</span>
+        <span class="stat-desc">배포 가능한 프로젝트</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-visual reveal">
+    <div class="code-window">
+      <div class="code-titlebar">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+        <span class="code-filename">my-jeju-app.py</span>
+      </div>
+      <div class="code-body">
+        <div><span class="c-comment"># 아이디어만 있으면 됩니다 🌊</span></div>
+        <div><span class="c-keyword">import</span> <span class="c-var">anthropic</span></div>
+        <br>
+        <div><span class="c-fn">def</span> <span class="c-var">build_with_vibes</span><span>(idea):</span></div>
+        <div>&nbsp;&nbsp;<span class="c-var">client</span> = <span class="c-fn">anthropic</span>.<span class="c-fn">Anthropic</span>()</div>
+        <br>
+        <div>&nbsp;&nbsp;<span class="c-var">response</span> = <span class="c-var">client</span>.<span class="c-fn">messages</span>.<span class="c-fn">create</span>(</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-var">model</span>=<span class="c-string">"claude-sonnet-4"</span>,</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-var">messages</span>=[{</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-string">"role"</span>: <span class="c-string">"user"</span>,</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-string">"content"</span>: idea</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;}]</div>
+        <div>&nbsp;&nbsp;)</div>
+        <div>&nbsp;&nbsp;<span class="c-keyword">return</span> response.<span class="c-var">content</span></div>
+        <br>
+        <div><span class="c-comment"># 3일 후, 실제 서비스로 배포됩니다 🚀</span></div>
+        <div><span class="c-fn">build_with_vibes</span>(<span class="c-string">"제주 맛집 추천 AI"</span>)</div>
+      </div>
+    </div>
+    <div class="vibe-badge">VIBE<br>CODING<br>🌊</div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule" id="schedule">
+  <div class="schedule-header reveal">
+    <div>
+      <div class="section-label">3박 4일 일정</div>
+      <h2 class="schedule-title">하루하루가<br>완성을 향해</h2>
+    </div>
+  </div>
+
+  <div class="days-grid reveal">
+    <div class="day-col">
+      <span class="day-num">DAY 01</span>
+      <span class="day-emoji">✈️</span>
+      <div class="day-title">도착<br>&amp; 셋업</div>
+      <ul class="day-items">
+        <li>제주 공항 픽업 서비스</li>
+        <li>숙소 체크인 & 환경 세팅</li>
+        <li>팀 빌딩 & 아이스브레이킹</li>
+        <li>바이브코딩 오리엔테이션</li>
+        <li>아이디어 1분 피칭</li>
+        <li>저녁 — 제주 흑돼지 환영 만찬</li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <span class="day-num">DAY 02</span>
+      <span class="day-emoji">🧠</span>
+      <div class="day-title">AI 툴<br>마스터</div>
+      <ul class="day-items">
+        <li>Claude & Cursor 집중 실습</li>
+        <li>프롬프트 엔지니어링 워크샵</li>
+        <li>점심 후 바다 산책 (선택)</li>
+        <li>개인 프로젝트 구체화</li>
+        <li>1:1 멘토링 세션</li>
+        <li>저녁 — 성산일출봉 노을 감상</li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <span class="day-num">DAY 03</span>
+      <span class="day-emoji">⚡</span>
+      <div class="day-title">빌드<br>스프린트</div>
+      <ul class="day-items">
+        <li>09시 — 풀 데이 코딩 스프린트</li>
+        <li>AI 기반 프론트엔드 구현</li>
+        <li>백엔드 & API 연동</li>
+        <li>중간 데모 & 피어 리뷰</li>
+        <li>배포 준비 & 테스트</li>
+        <li>저녁 — 한림 카페에서 감성 코딩</li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <span class="day-num">DAY 04</span>
+      <span class="day-emoji">🚀</span>
+      <div class="day-title">데모<br>&amp; 출발</div>
+      <ul class="day-items">
+        <li>최종 데모데이 발표</li>
+        <li>프로젝트 배포 &amp; 공개</li>
+        <li>수료증 & 네트워킹</li>
+        <li>다음 스텝 로드맵 수립</li>
+        <li>공항 셔틀 서비스</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="reveal">
+    <div class="section-label">왜 이 부트캠프인가</div>
+    <h2 style="font-family:'Black Han Sans',sans-serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.1;margin-top:1rem;">
+      코딩이 처음이어도<br>괜찮은 이유
+    </h2>
+  </div>
+
+  <div class="features-grid reveal">
+    <div class="feature-card">
+      <div class="feature-icon">🌊</div>
+      <h3 class="feature-title">바이브 우선 접근</h3>
+      <p class="feature-desc">문법보다 아이디어. AI가 코드를 작성하고, 여러분은 방향을 잡습니다. 비개발자도 첫날부터 뭔가를 만들 수 있습니다.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤝</div>
+      <h3 class="feature-title">1:4 멘토 비율</h3>
+      <p class="feature-desc">12명 정원에 3명의 멘토. 막힐 때마다 즉각 도움받을 수 있습니다. 오래 기다리지 않아도 됩니다.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📦</div>
+      <h3 class="feature-title">실제 배포까지</h3>
+      <p class="feature-desc">포트폴리오용 데모가 아닙니다. 4일 안에 실제 사람들이 쓸 수 있는 서비스로 배포하는 것을 목표로 합니다.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏡</div>
+      <h3 class="feature-title">올인클루시브</h3>
+      <p class="feature-desc">숙박, 조식, 픽업드랍 모두 포함. 짐 싸서 내려오기만 하면 됩니다. 코딩에만 집중하세요.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧬</div>
+      <h3 class="feature-title">최신 AI 스택</h3>
+      <p class="feature-desc">Claude, GPT-4o, Cursor, Vercel, Supabase — 현업에서 실제로 쓰는 도구들로 실습합니다.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌴</div>
+      <h3 class="feature-title">제주의 영감</html>
+      <p class="feature-desc">자연 속 몰입은 생각보다 훨씬 강력합니다. 바다, 오름, 귤밭이 배경이 되면 아이디어가 달라집니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO / APPLY -->
+<section class="who" id="who">
+  <div class="section-label reveal">이런 분께 딱입니다</div>
+  <div class="who-grid">
+    <div class="reveal">
+      <ul class="who-list">
+        <li class="who-item">
+          <span class="who-item-icon">💼</span>
+          <div>아이디어는 있지만 개발자가 없어서 실행 못 하고 있는 사업가 / 기획자</div>
+        </li>
+        <li class="who-item">
+          <span class="who-item-icon">🎨</span>
+          <div>노코드 툴의 한계를 느끼고 AI 코딩으로 넘어가고 싶은 디자이너</div>
+        </li>
+        <li class="who-item">
+          <span class="who-item-icon">🚀</span>
+          <div>사이드 프로젝트를 MVP로 빠르게 완성하고 싶은 직장인</div>
+        </li>
+        <li class="who-item">
+          <span class="who-item-icon">👩‍💻</span>
+          <div>AI 툴을 업무에 적극적으로 활용하고 싶은 주니어 개발자</div>
+        </li>
+        <li class="who-item">
+          <span class="who-item-icon">🌱</span>
+          <div>비전공자이지만 서비스 개발에 도전해보고 싶은 분</div>
+        </li>
+        <li class="who-item">
+          <span class="who-item-icon">🤔</span>
+          <div>AI가 뭔진 알겠는데, 어떻게 써야 할지 감이 안 잡히는 모든 분</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="who-cta-box reveal" id="apply">
+      <h3 class="who-cta-title">지금 바로<br><span class="accent">신청하세요</span></h3>
+
+      <div class="price-box">
+        <div class="price-orig">₩ 990,000</div>
+        <div class="price-now">₩690,000</div>
+        <div class="price-note">얼리버드 할인 (6월 30일까지) · VAT 별도</div>
+      </div>
+
+      <ul class="includes">
+        <li>3박 4일 숙박 (2인 1실)</li>
+        <li>매일 아침 식사 포함</li>
+        <li>공항 픽업 & 드랍 서비스</li>
+        <li>멘토 1:4 비율 집중 지도</li>
+        <li>모든 워크샵 자료 & 녹화본</li>
+        <li>수료 후 커뮤니티 평생 멤버십</li>
+      </ul>
+
+      <div class="seats-badge">
+        <div class="pulse"></div>
+        잔여석 5자리
+      </div>
+
+      <a href="#" class="btn-primary" style="width:100%;text-align:center;display:block;">신청서 제출하기</a>
+      <p style="font-size:0.75rem;color:rgba(245,240,232,0.3);text-align:center;margin-top:1rem;font-weight:300;">
+        신청 후 48시간 이내 검토 메일을 드립니다
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-header reveal">
+    <div class="section-label">자주 묻는 질문</div>
+    <h2 class="faq-title">궁금한 게<br>있으신가요?</h2>
+  </div>
+
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        코딩을 전혀 모르는데 참가할 수 있나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>네, 괜찮습니다. 바이브코딩의 핵심은 AI에게 명확하게 지시하는 능력이지, 코드를 직접 작성하는 능력이 아닙니다. 실제로 지난 기수 참가자의 60%가 비개발자였고, 모두 4일 안에 프로젝트를 완성했습니다.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        노트북은 어떤 사양이 필요한가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>최신 AI 툴 대부분이 클라우드 기반이라 고사양 노트북이 필요하지 않습니다. 인터넷 연결이 가능한 노트북이면 충분합니다. OS는 Mac, Windows 모두 상관없으며, 사전에 필요한 프로그램 설치 가이드를 보내드립니다.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        1인실 업그레이드가 가능한가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>가능합니다. 1인실 추가 요금은 3박 기준 18만원이며, 신청서 제출 시 옵션으로 선택하실 수 있습니다. 선착순 4자리만 운영되니 빠르게 신청해주세요.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        어떤 프로젝트를 만들 수 있나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>웹앱, 챗봇, 자동화 툴, API 서비스 등 다양한 형태가 가능합니다. 과거 참가자들은 AI 여행 플래너, 스마트 일정 관리 앱, 제주 맛집 추천 챗봇, 자동 이메일 분류기 등을 만들었습니다. 아이디어는 오셔서 발전시켜도 됩니다.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        취소 및 환불 정책은 어떻게 되나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>행사 14일 전까지는 100% 환불, 7~14일 전은 50% 환불, 7일 미만은 환불이 어렵습니다. 단, 부득이한 사정이 있으시면 동일 기수 내 다른 분께 자리를 양도하는 방법을 지원해드립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">VIBE_CODING.JEJU</div>
+  <p class="footer-copy">© 2025 제주 바이브코딩 부트캠프. All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#">인스타그램</a></li>
+    <li><a href="#">오픈카톡</a></li>
+    <li><a href="#">이메일 문의</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Stagger grid items
+  document.querySelectorAll('.days-grid .day-col, .features-grid .feature-card').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.07) + 's';
+  });
+</script>
+</body>
+</html>
